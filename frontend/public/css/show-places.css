@@ -1,0 +1,74 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #181a1b;
+  color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #23272a;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  padding: 32px 28px;
+}
+
+h1 {
+  color: #4a90e2;
+  margin-top: 0;
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+#placesListSection {
+  margin-top: 28px;
+}
+
+#placesList {
+  list-style: none;
+  padding: 0;
+}
+
+#placesList li {
+  background: #202225;
+  margin-bottom: 20px;
+  padding: 20px 18px;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+  font-size: 1.05rem;
+  position: relative;
+  color: #f7f7f7;
+}
+
+#placesList strong {
+  color: #4a90e2;
+  font-size: 1.1em;
+}
+
+#placesList img {
+  display: block;
+  margin: 12px 0;
+  max-width: 140px;
+  border-radius: 6px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.18);
+  background: #23272a;
+}
+
+button {
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 7px 14px;
+  margin: 6px 4px 0 0;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #357abd;
+}

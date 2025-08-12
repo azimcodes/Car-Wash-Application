@@ -1,0 +1,104 @@
+/* booking.css */
+
+header nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  background-color: #1e1e1e;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+  user-select: none;
+}
+
+header nav a {
+  color: #bbb;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+header nav a.active,
+header nav a:hover {
+  background-color: #6200ee;
+  color: white;
+}
+
+main {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 1rem 2rem;
+  animation: fadeIn 0.7s ease forwards;
+}
+
+form {
+  background-color: #2a2a2a;
+  padding: 1.8rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.8);
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+form label {
+  display: block;
+  margin-bottom: 1.2rem;
+  color: #ddd;
+  font-weight: 600;
+}
+
+form input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #3a3a3a;
+  color: white;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus {
+  outline: none;
+  background-color: #4b4b4b;
+  box-shadow: 0 0 6px 2px #6200ee;
+}
+
+form button {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #6200ee;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+form button:hover {
+  background-color: #7a3fff;
+}
+
+section {
+  background-color: #1e1e1e;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.7);
+  margin-bottom: 2rem;
+  color: #ccc;
+}
+
+section h2 {
+  color: #bb86fc;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(15px);}
+  to {opacity: 1; transform: translateY(0);}
+}

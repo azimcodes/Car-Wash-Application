@@ -1,0 +1,74 @@
+main {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem;
+  color: #eee;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+form#createPlaceForm {
+  background: #222;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+form#createPlaceForm input,
+form#createPlaceForm textarea,
+form#createPlaceForm select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 1rem;
+  background-color: #333;
+  color: #eee;
+}
+
+form#createPlaceForm button {
+  background-color: #6200ee;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form#createPlaceForm button:hover {
+  background-color: #7e3ff2;
+}
+
+#placesList {
+  list-style-type: none;
+  padding: 0;
+}
+
+#placesList li {
+  background: #1e1e1e;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #6200ee50;
+}
+
+#placesList button {
+  margin-right: 0.5rem;
+  background-color: #6200ee;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#placesList button:hover {
+  background-color: #7e3ff2;
+}

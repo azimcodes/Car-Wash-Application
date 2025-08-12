@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wash Places - Car Wash App</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/places.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="booking.html">Booking</a>
+      <a href="show-places.html">Show Places</a>
+      <a href="#" id="logoutBtn">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Wash Places</h1>
+
+    <section id="createPlaceSection">
+      <h2>Create a New Place</h2>
+      <form id="createPlaceForm" enctype="multipart/form-data">
+        <input type="text" id="name" name="name" placeholder="Place Name" required />
+        <input type="text" id="address" name="address" placeholder="Address" required />
+        <input type="text" id="phone" name="phone" placeholder="Phone (optional)" />
+        <textarea id="description" name="description" placeholder="Description (optional)"></textarea>
+        <select id="availability" name="availability">
+          <option value="available">Available</option>
+          <option value="busy">Busy</option>
+          <option value="closed">Closed</option>
+        </select>
+        <input type="url" id="location" name="location" placeholder="Google Maps URL" required />
+        <label>
+          Open Now:
+          <input type="checkbox" name="isOpen" id="isOpen" />
+        </label>
+        <p id="message"></p>
+        <label>
+          Photo:
+          <input type="file" name="photo" id="photo" accept="image/*" />
+        </label>
+        <button type="submit">Add Place</button>
+      </form>
+    </section>
+
+    <section id="placesListSection">
+      <h2>Existing Places</h2>
+      <ul id="placesList"></ul>
+    </section>
+  </main>
+
+  <script src="js/auth-check.js"></script>
+  <script src="js/places.js"></script>
+</body>
+</html>

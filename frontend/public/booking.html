@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Car Wash App - Booking</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/booking.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="booking.html" class="active">Booking</a>
+      <a href="home.html">Home</a>
+      <a href="show-places.html">Show Places</a>
+      <a href="#" id="logoutBtn">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Make a Booking</h1>
+
+    <form id="bookingForm">
+     <select id="placeSelect" name="placeSelect" required>
+      <option value="">Select a place</option>
+      <!-- Options will be filled by JS -->
+    </select>
+      <label>
+        Car Info:
+        <input type="text" id="carInfo" placeholder="Your car details" required />
+      </label>
+
+      <label>
+        Booking Date & Time:
+        <input type="datetime-local" id="bookingDateTime" required />
+      </label>
+
+      <button type="submit">Book Now</button>
+    </form>
+
+    <p id="message"></p>
+
+    <section>
+      <h2>How Booking Works</h2>
+      <p>Book your car wash appointment easily by selecting your car details and preferred date & time.</p>
+    </section>
+
+    <section>
+      <h2>Our Services</h2>
+      <ul>
+        <li>Exterior Wash</li>
+        <li>Interior Cleaning</li>
+        <li>Full Service Detail</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Booking Policies</h2>
+      <p>Please arrive 10 minutes before your booking time. Cancelations should be done 24 hours in advance.</p>
+    </section>
+  </main>
+  <script>
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.href = 'login.html';
+    }
+     document.getElementById('logoutBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    localStorage.removeItem('token');
+    window.location.href = 'login.html';
+  });
+  </script>
+ <script src="js/auth-check.js"></script>
+<script src="./js/booking.js"></script>
+</body>
+<!-- Payment Option Modal -->
+<div id="paymentModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.6); z-index:1000; align-items:center; justify-content:center;">
+  <div style="background:#23272a; color:#fff; padding:32px 24px; border-radius:10px; box-shadow:0 2px 16px rgba(0,0,0,0.18); text-align:center;">
+    <h2>Choose Payment Option</h2>
+    <button id="payNowBtn" style="margin:12px; background:#4a90e2; color:#fff; border:none; border-radius:6px; padding:12px 24px; font-size:1.1em;">Pay Now</button>
+    <button id="payAtPlaceBtn" style="margin:12px; background:#444; color:#fff; border:none; border-radius:6px; padding:12px 24px; font-size:1.1em;">Pay at Place</button>
+    <br><br>
+    <button id="closeModalBtn" style="background:none; color:#aaa; border:none; font-size:1em;">Cancel</button>
+  </div>
+</div>
+</html>
