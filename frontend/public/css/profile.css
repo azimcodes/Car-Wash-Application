@@ -1,0 +1,112 @@
+/* Card-style horizontal layout */
+.bookings-table tr {
+  display: flex;
+  flex-direction: row;
+  background: #23272a;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bookings-table tr:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.bookings-table tr td {
+  border: none; /* remove table borders */
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Left side image */
+.booking-img {
+  flex: 0 0 150px; /* fixed width */
+  margin-right: 20px;
+}
+
+.booking-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Right side details */
+.booking-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #ddd;
+  padding-left: 10px;
+}
+
+.booking-details h3 {
+  margin: 0;
+  color: #4a90e2;
+  font-size: 1.3rem;
+}
+
+.booking-details p {
+  margin: 0;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.booking-details .booking-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+/* Map link as button */
+.booking-details a {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #4a90e2;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s;
+  margin-top: 20px;
+}
+
+.booking-details a:hover {
+  background-color: #357abd;
+}
+
+/* Action buttons */
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.edit-btn { background-color: #4a90e2; color: #fff; }
+.delete-btn { background-color: #e94e4e; color: #fff; }
+
+.btn:hover { transform: translateY(-2px); }
+.edit-btn:hover { background-color: #357abd; }
+.delete-btn:hover { background-color: #c43d3d; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .bookings-table tbody tr {
+    flex-direction: column;
+    align-items: center;
+  }
+  .booking-img {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  .booking-img img { width: 100%; height: auto; }
+  .booking-details { align-items: center; text-align: center; }
+  .booking-details .booking-actions { justify-content: center; }
+}

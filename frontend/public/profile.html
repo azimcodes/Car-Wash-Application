@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <title>Profile</title>
+</head>
+<body>
+    <header>
+        <nav class="nav-bar">
+            <a href="booking.html">Booking</a>
+            <a href="home.html">Home</a>
+            <a href="show-places.html">Show Places</a>
+            <a href="profile.html" class="active">Profile</a>
+            <a href="admin.html">Admin Panel</a>
+            <a href="#" id="logoutBtn">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>User Profile</h1>
+        <section id="profileSection">
+            <h2>Your Bookings</h2>
+            <table id="bookingsList" class="bookings-table">
+            <thead>
+                <tr>
+                <th>Place Name</th>
+                <th>Location</th>
+                <th>Description</th>
+                <th>Photo</th>
+                <th>Car Info</th>
+                <th>Booking Date & Time</th>
+                <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            </table>
+            </section>
+        <p id="message"></p>
+    </main>
+    <script src="js/auth-check.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

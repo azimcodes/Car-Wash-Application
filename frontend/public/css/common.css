@@ -162,3 +162,8 @@ p#message {
     transform: translateY(0);
   }
 }
+.active{
+  background-color: #6200ee;
+  color: white;
+  box-shadow: 0 2px 4px rgba(98, 0, 238, 0.3);
+}

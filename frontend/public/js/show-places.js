@@ -21,22 +21,25 @@ async function fetchPlaces() {
     placesList.innerHTML = "";
 
     places.forEach(place => {
-      const li = document.createElement("li");
+     const li = document.createElement("li");
+      li.classList.add("place-card");
       li.innerHTML = `
-        <strong>${place.name}</strong> (${place.availability})<br />
-        ${place.address}<br />
-        ${place.phone ? "Phone: " + place.phone + "<br />" : ""}
-        ${place.description ? place.description + "<br />" : ""}
-        ${place.photo ? `<img src="${place.photo}" alt="Photo" style="max-width:100px;"><br />` : ""}
-        ${place.location ? `<a href="${place.location}" target="_blank" rel="noopener" style="color:#4a90e2;">View on Map</a><br />` : ""}
-          <div>
-           <button onclick="bookPlace(${place.id}, '${place.name}')">Book</button>
-          </div>
-          <div class="schedule">
-            <strong>Schedule:</strong> ${place.availability === "available" ? "Open now" : place.availability}
-          </div>`
-          ;
-      placesList.appendChild(li);
+  <div class="place-photo">
+    ${place.photo ? `<img src="${place.photo}" alt="${place.name}">` : ""}
+  </div>
+  <div class="place-info">
+    <h3>${place.name}</h3>
+    <p><strong>Availability:</strong> ${place.availability === "available" ? "Open now" : place.availability}</p>
+    <p><strong>Address:</strong> ${place.address}</p>
+    ${place.phone ? `<p><strong>Phone:</strong> ${place.phone}</p>` : ""}
+    ${place.description ? `<p>${place.description}</p>` : ""}
+    <div class="buttons">
+      ${place.location ? `<button class="map-btn" onclick="window.open('${place.location}', '_blank')">View on Map</button>` : ""}
+      <button class="book-btn" onclick="bookPlace(${place.id}, '${place.name}')">Book</button>
+    </div>
+  </div>
+`;
+placesList.appendChild(li);
     });
   } catch (err) {
     console.error("Failed to fetch places:", err);

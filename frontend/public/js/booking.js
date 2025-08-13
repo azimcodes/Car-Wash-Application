@@ -39,6 +39,31 @@ document.addEventListener("DOMContentLoaded", function(){
         }
       }
       loadPlaces();
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const placeId = document.getElementById('placeSelect').value;
+          const carInfo = document.getElementById('carInfo').value;
+          const bookingDateTime = document.getElementById('bookingDateTime').value;
+
+          const token = localStorage.getItem('token');
+          try {
+            const res = await fetch('/api/bookings', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+              },
+              body: JSON.stringify({placeId, carInfo, bookingDateTime })
+            });
+
+            if (!res.ok) throw new Error('Failed to create booking');
+            document.getElementById('message').textContent = 'Booking created successfully!';
+            e.target.reset();
+          } catch (err) {
+            document.getElementById('message').textContent = err.message;
+          }
+        });
+          
 });
 
 

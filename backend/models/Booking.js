@@ -9,8 +9,20 @@ const Booking = sequelize.define("Booking", {
   },
   userId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
+    references: {
+      model: 'Users',    // or User model name
+      key: 'id'
+    }
   },
+        placeId: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        references: {
+          model: 'Places',
+          key: 'id'
+        }
+      },
   carInfo: {
     type: DataTypes.STRING,
     allowNull: false,

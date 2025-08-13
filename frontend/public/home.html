@@ -2,38 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Car Wash App - Home</title>
   <link rel="stylesheet" href="css/common.css" />
-  <link rel="stylesheet" href="css/home.css"/>
+  <link rel="stylesheet" href="css/home.css" />
 </head>
 <body>
   <header>
-    <nav>
+    <nav class="nav-bar">
       <a href="booking.html">Booking</a>
       <a href="home.html">Home</a>
       <a href="show-places.html">Show Places</a>
+      <a href="profile.html">My Profile</a>
+      <a href="about.html">About Us</a>
       <a href="#" id="logoutBtn">Logout</a>
     </nav>
   </header>
 
-  <main>
-    <h1>Welcome to Car Wash App!</h1>
-
-    <section id="about-us">
-      <h2>About Us</h2>
-      <p>We provide the best car wash services with quick and easy online booking.</p>
-    </section>
-
-    <section id="services">
-      <h2>What We Do</h2>
-      <ul>
-        <li>Exterior Wash</li>
-        <li>Interior Cleaning</li>
-        <li>Full-Service Detailing</li>
-      </ul>
-    </section>
-  </main>
-
+  <!-- Hero Section with video -->
+  <section id="hero">
+    <video autoplay muted loop id="heroVideo">
+      <source src="./videos/6873504-hd_1280_720_25fps.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+    <div class="overlay">
+      <h1>Welcome to Car Wash App!</h1>
+      <p>Quick & Easy Online Booking for Your Car Wash</p>
+      <a href="booking.html" class="btn">Book Now</a>
+    </div>
+  </section>
+  
   <script src="js/auth-check.js"></script>
   <script src="js/home.js"></script>
 </body>
