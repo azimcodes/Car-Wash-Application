@@ -31,6 +31,8 @@ router.post("/", protect, isAdmin, upload.single("photo"), async (req, res) => {
     if (!name || !address) {
       return res.status(400).json({ message: "Name and address required" });
     }
+    console.log(req.body);
+    console.log(req.file);
 
     const photo = req.file ? `/uploads/${req.file.filename}` : null;
 

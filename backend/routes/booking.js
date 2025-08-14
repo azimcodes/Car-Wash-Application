@@ -62,4 +62,41 @@ router.delete('/:id', protect, async (req, res) => {
   }
 });
 
+router.get('/:id', protect, async (req, res) => {
+  try {
+    const booking = await Booking.findByPk(req.params.id);
+    if (!booking) return res.status(404).json({ message: 'Booking not found' });
+    res.json(booking);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+    router.put('/:id', protect, async (req, res) => {
+  try {
+    const booking = await Booking.findByPk(req.params.id);
+    if (!booking) return res.status(404).json({ message: 'Booking not found' });
+
+    // Check if the booking belongs to the logged-in user
+    if (booking.userId !== req.user.id) {
+      return res.status(403).json({ message: 'Not authorized to edit this booking' });
+    }
+
+    const { carInfo, bookingDateTime } = req.body;
+    if (!carInfo || !bookingDateTime) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    booking.carInfo = carInfo;
+    booking.bookingDateTime = bookingDateTime;
+    await booking.save();
+
+    res.json(booking);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 export default router;

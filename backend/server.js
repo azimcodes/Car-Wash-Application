@@ -7,7 +7,7 @@ import bookingRoutes from "./routes/booking.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import placeRoutes from "./routes/place.js";
-
+import carRoutes from "./routes/car.js";
 // Load environment variables
 dotenv.config();
 
@@ -27,6 +27,8 @@ app.use('/uploads', express.static(path.join(__dirname, "../frontend/uploads")))
 app.use("/api/auth", authRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/places", placeRoutes);
+app.use("/api/car", carRoutes);
+app.use(express.urlencoded({ extended: true }));
 
 // Start server
 const PORT =  5001;

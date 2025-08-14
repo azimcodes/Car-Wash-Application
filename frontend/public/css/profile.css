@@ -110,3 +110,63 @@
   .booking-details { align-items: center; text-align: center; }
   .booking-details .booking-actions { justify-content: center; }
 }
+.cars-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.cars-table thead {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.cars-table th, 
+.cars-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: #23272a;
+}
+
+.cars-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.cars-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.cars-table th {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cars-table button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.3s ease;
+}
+
+.cars-table button:hover {
+  background: #45a049;
+}
+
+.cars-table .delete-btn {
+  background: #e74c3c;
+}
+
+.cars-table .delete-btn:hover {
+  background: #c0392b;
+}

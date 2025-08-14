@@ -15,6 +15,7 @@
             <a href="show-places.html">Show Places</a>
             <a href="profile.html" class="active">Profile</a>
             <a href="admin.html">Admin Panel</a>
+            <a href="about.html">About</a>
             <a href="#" id="logoutBtn">Logout</a>
         </nav>
     </header>
@@ -22,6 +23,17 @@
     <main>
         <h1>User Profile</h1>
         <section id="profileSection">
+               <div id="createCarSection">
+                    <h2>Create Your Car</h2>
+                    <form id="createCarForm" enctype="multipart/form-data">
+                        <input type="text" id="make" name="make" placeholder="Car Make" required />
+                        <input type="text" id="model" name="model" placeholder="Car Model" required />
+                        <input type="number" id="year" name="year" placeholder="Year" required />
+                        <input type="text" id="color" name="color" placeholder="Color" required />
+                        <p id="message"></p>
+                        <button type="submit">Add Car</button>
+                    </form>
+               </div>
             <h2>Your Bookings</h2>
             <table id="bookingsList" class="bookings-table">
             <thead>
@@ -32,6 +44,19 @@
                 <th>Photo</th>
                 <th>Car Info</th>
                 <th>Booking Date & Time</th>
+                <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            </table>
+            <h2>Your cars</h2>
+            <table id="carsList" class="cars-table">
+            <thead>
+                <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Color</th>
                 <th>Actions</th>
                 </tr>
             </thead>
