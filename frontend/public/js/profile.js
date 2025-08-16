@@ -1,9 +1,12 @@
-const token = localStorage.getItem('token');
-if (!token) window.location.href = 'login.html';
+import isAuth from './isAuth.js';
+
+const token = isAuth.requireAuth(); // Redirects if not logged in
+console.log(token);
+
 const apiUrl = "/api/bookings";
 document.getElementById('logoutBtn').addEventListener('click', (e) => {
   e.preventDefault();
-  localStorage.removeItem('token');
+  localStorage.removeItem('token') || sessionStorage.removeItem('token');
   window.location.href = 'login.html';
 });
 async function loadBookings() {
@@ -11,6 +14,7 @@ async function loadBookings() {
     const res = await fetch(`${apiUrl}/me`, {
       headers: { Authorization: `Bearer ${token}` }
     });
+    console.log(token);
     console.log('Bookings fetch status:', res.status);
     const bookings = await res.json();
     console.log('Bookings data:', bookings);
@@ -29,12 +33,13 @@ async function loadBookings() {
     <p> You have a Booking: ${new Date(b.bookingDateTime).toLocaleString()}</p>
     ${b.Place && b.Place.location ? `<a href="${b.Place.location}" target="_blank">View on Map</a>` : ''}
     <div class="booking-actions">
-      <button class="btn edit-btn" onclick="editBooking('${b.id}')">Edit</button>
-      <button class="btn delete-btn" onclick="deleteBooking('${b.id}')">Delete</button>
+      <button class="btn edit-btn">Edit</button>
+      <button class="btn delete-btn">Delete</button>
     </div>
-  </td>
-`;
-;
+  </td>`;
+  
+  tr.querySelector('.delete-btn').addEventListener('click', () => deleteBooking(b.id));
+  tr.querySelector('.edit-btn').addEventListener('click', () => editBooking(b.id));
   tbody.appendChild(tr);
 });
   } catch (err) {
@@ -47,7 +52,6 @@ loadBookings();
 async function deleteBooking(id) {
   if (!confirm('Are you sure you want to delete this booking?')) return;
 
-  const token = localStorage.getItem('token');
   try {
     const res = await fetch(`/api/bookings/${id}`, {
       method: 'DELETE',
@@ -63,8 +67,8 @@ async function deleteBooking(id) {
     document.getElementById('message').textContent = err.message;
   }
 }
+// window.deleteBooking = deleteBooking; // Expose to global scope
 async function editBooking(id) {
-  const token = localStorage.getItem('token');
   try {
     const res = await fetch(`/api/bookings/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
@@ -98,7 +102,6 @@ async function editBooking(id) {
 }
 
 function fetchCars() {
-  const token = localStorage.getItem('token');
   fetch('/api/car', {
     headers: {
       Authorization: `Bearer ${token}`
@@ -116,10 +119,12 @@ function fetchCars() {
         <td>${car.year}</td>
         <td>${car.color}</td>
          <td>
-          <button class="edit-btn" onclick="editCar(${car.id})">Edit</button>
-          <button class="delete-btn" onclick="deleteCar(${car.id})">Delete</button>
+          <button class="edit-btn">Edit</button>
+          <button class="delete-btn">Delete</button>
         </td>
       `;
+      tr.querySelector('.delete-btn').addEventListener('click', () => deleteCar(car.id));
+      tr.querySelector('.edit-btn').addEventListener('click', () => editCar(car.id));
       tbody.appendChild(tr);
     });
   })
@@ -164,7 +169,6 @@ createCarForm.addEventListener("submit", async (e) => {
 async function deleteCar(id) {
   if (!confirm('Are you sure you want to delete this car?')) return;
 
-  const token = localStorage.getItem('token');
   try {
     const res = await fetch(`/api/car/${id}`, {
       method: 'DELETE',
@@ -180,7 +184,6 @@ async function deleteCar(id) {
   }
 }
 async function editCar(id) {
-  const token = localStorage.getItem('token');
   try {
     const res = await fetch(`/api/car/${id}`, {
       headers: { Authorization: `Bearer ${token}` }

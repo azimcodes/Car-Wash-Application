@@ -35,6 +35,14 @@ const Booking = sequelize.define("Booking", {
     type: DataTypes.ENUM("pending", "completed", "cancelled"),
     defaultValue: "pending",
   },
+  isPaid: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false, // unpaid by default
+  },
+  paymentMethod: {
+    type: DataTypes.ENUM("pay_now", "pay_at_place"),
+    allowNull: true, // filled after choosing payment
+  },
 });
 
 export default Booking;

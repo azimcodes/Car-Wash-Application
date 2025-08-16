@@ -97,6 +97,69 @@ section h2 {
   font-weight: 700;
   margin-bottom: 0.8rem;
 }
+/* Payment Modal */
+#paymentModal {
+  display: none; /* hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#paymentModal .modal-content {
+  background: #23272a;
+  color: #fff;
+  padding: 32px 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+#paymentModal button {
+  margin: 12px;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#paymentModal #payNowBtn {
+  background: #4a90e2;
+  color: #fff;
+}
+
+#paymentModal #payNowBtn:hover {
+  background: #357ABD;
+}
+
+#paymentModal #payAtPlaceBtn {
+  background: #444;
+  color: #fff;
+}
+
+#paymentModal #payAtPlaceBtn:hover {
+  background: #666;
+}
+
+#paymentModal #closeModalBtn {
+  background: none;
+  color: #aaa;
+  font-size: 1em;
+}
+
+#paymentModal #closeModalBtn:hover {
+  color: #fff;
+}
 
 @keyframes fadeIn {
   from {opacity: 0; transform: translateY(15px);}

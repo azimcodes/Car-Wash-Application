@@ -1,12 +1,17 @@
 // auth-check.js ensures user is logged in and redirects otherwise
+import isAuth from './isAuth.js';
 
-const token = localStorage.getItem('token');
-if (!token) {
-  window.location.href = 'index.html';
+const token = isAuth.requireAuth(); 
+const role = localStorage.getItem('role') || sessionStorage.getItem('role');
+
+if (role !== 'admin') {
+  alert("Access denied: Admins only");
+  window.location.href = 'home.html';
 }
 document.getElementById('logoutBtn').addEventListener('click', (e) => {
   e.preventDefault();
-  localStorage.removeItem('token');
+  localStorage.removeItem('token') || sessionStorage.removeItem('token');
+  localStorage.removeItem('role') || sessionStorage.removeItem('role');
   window.location.href = 'login.html';
 });
 const apiUrl = "/api/places";
@@ -29,13 +34,18 @@ async function fetchPlaces() {
       const li = document.createElement("li");
       li.innerHTML = `
         <strong>${place.name}</strong> (${place.availability})<br />
+        <div class="place-photo">
+          ${place.photo ? `<img src="${place.photo}" alt="${place.name}">` : ""}
+        </div>
         ${place.address}<br />
         ${place.phone ? "Phone: " + place.phone + "<br />" : ""}
         ${place.description ? place.description + "<br />" : ""}
         ${place.location ? `<a href="${place.location}" target="_blank" rel="noopener" style="color:#4a90e2;">View on Map</a><br />` : ""}
-        <button onclick="editPlace(${place.id})">Edit</button>
-        <button onclick="deletePlace(${place.id})">Delete</button>
+        <button class="edit-btn">Edit</button>
+        <button class="delete-btn">Delete</button>
       `;
+      li.querySelector(".edit-btn").addEventListener("click", () => editPlace(place.id));
+      li.querySelector(".delete-btn").addEventListener("click", () => deletePlace(place.id));
       placesList.appendChild(li);
     });
   } catch (err) {

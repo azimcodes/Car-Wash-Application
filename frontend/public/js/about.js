@@ -1,9 +1,17 @@
+import isAuth from "./isAuth.js";
 window.addEventListener('load', () => {
+  const token = isAuth.requireAuth(); 
   const heroContent = document.querySelector('.hero-content');
   setTimeout(() => {
     heroContent.classList.add('show');
   }, 200); // small delay for smooth pop-up
 });
+  document.getElementById('logoutBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+         localStorage.removeItem('token') || sessionStorage.removeItem('token');;
+         localStorage.removeItem('role') || sessionStorage.removeItem('role');
+        window.location.href = 'login.html';
+      });
 document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.service-cards .card');
 
